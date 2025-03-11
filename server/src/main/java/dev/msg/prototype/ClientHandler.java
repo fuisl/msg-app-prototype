@@ -1,3 +1,5 @@
+package dev.msg.prototype;
+
 import java.io.*;
 import java.net.*;
 
@@ -11,9 +13,9 @@ public class ClientHandler implements Runnable {
     @Override
     public void run() {
         System.out.printf("ClientHandlerThread started for %s%n", socket.getInetAddress());
-        
+
         try (BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-             PrintWriter output = new PrintWriter(socket.getOutputStream(), true)) {
+                PrintWriter output = new PrintWriter(socket.getOutputStream(), true)) {
 
             // Send welcome message
             output.println("Welcome to the server!");
