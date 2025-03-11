@@ -26,7 +26,7 @@ public class Server {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.printf("New client connected: %s%n", clientSocket.getInetAddress());
+                System.out.printf("New client connected: %s:%d%n", clientSocket.getInetAddress(), clientSocket.getPort());
 
                 threadPool.execute(new ClientHandler(clientSocket));
             }
