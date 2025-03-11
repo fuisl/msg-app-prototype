@@ -1,3 +1,5 @@
+package dev.msg.prototype;
+
 import java.io.*;
 import java.net.*;
 import java.util.concurrent.ExecutorService;
@@ -26,7 +28,8 @@ public class Server {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.printf("New client connected: %s:%d%n", clientSocket.getInetAddress(), clientSocket.getPort());
+                System.out.printf("New client connected: %s:%d%n", clientSocket.getInetAddress(),
+                        clientSocket.getPort());
 
                 threadPool.execute(new ClientHandler(clientSocket));
             }
