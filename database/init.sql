@@ -20,7 +20,7 @@ CREATE TABLE chat_group (
 
 INSERT INTO user_account (username, user_password)
 VALUES 
-('nhien', 'anhnhienvodich'),
+('nhien', 'anhnhienvodichh'),
 ('john_doe', '123456'),
 ('jane_smith', 'password'),
 ('michael_jackson', 'qwerty'),
