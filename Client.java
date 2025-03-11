@@ -7,17 +7,26 @@ public class Client {
         int serverPort = 5001;
 
         try (Socket socket = new Socket(serverAddress, serverPort);
+                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()));
                 PrintWriter output = new PrintWriter(socket.getOutputStream(), true);
-                BufferedReader input = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+                BufferedReader consoleInput = new BufferedReader(new InputStreamReader(System.in))) {
 
-            String message = "Hello from client!";
-            output.println(message);
-            System.out.printf("Sent to server: %s%n", message);
+            System.out.println("Connected to server!");
+            System.out.println("Server says: " + input.readLine());
 
-            String response = input.readLine();
-            System.out.printf("Received from server: %s%n", response);
+            // Send messages to the server
+            String userInput;
+            while (true) {
+                System.out.print("Enter message: ");
+                userInput = consoleInput.readLine();
+                if (userInput.equalsIgnoreCase("exit"))
+                    break; // Exit condition
+
+                output.println(userInput);
+                System.out.println("Server response: " + input.readLine());
+            }
         } catch (IOException e) {
-            System.out.printf("Client exception: %s%n", e.getMessage());
+            System.err.println("Error in client communication: " + e.getMessage());
         }
     }
 }
