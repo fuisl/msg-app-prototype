@@ -1,3 +1,5 @@
+package dev.msg.prototype;
+
 import java.io.*;
 import java.net.*;
 
