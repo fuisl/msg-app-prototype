@@ -10,7 +10,7 @@ public class ClientThreadFactory implements ThreadFactory {
         Thread t = new Thread(r);
         t.setName("Client-" + counter++);
         t.setPriority(Thread.NORM_PRIORITY);
-        t.setDaemon(false);
+        t.setDaemon(true);
         return t;
     }
 }
