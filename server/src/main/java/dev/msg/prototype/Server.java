@@ -5,11 +5,16 @@ import java.net.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import dev.msg.prototype.database.MySQLDB;
+
 public class Server {
     private static final int THREAD_POOL_SIZE = 10;
     private static final int PORT = 5001;
 
     public static void main(String[] args) throws IOException {
+        // Establish DB connections
+        MySQLDB.getInstance().doSomething();
+
         ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE, new ClientThreadFactory());
         ServerSocket serverSocket = new ServerSocket(PORT);
 
